@@ -1,36 +1,41 @@
 import { useState } from "react"
 import axios from "axios"
 import styled from "styled-components"
+import { BASE_URL } from "../constants/urls"
 
 export default function AddProducts() {
     const [form, setForm] = useState({
-        nameProduct: "",
+        name: "",
         description: "",
         price: "",
-        imageProduct: ""
+        image: ""
     })
 
     function handleForm(e) {
         e.preventDefault()
-        axios.post("http://localhost:5000/addProducts", form)
+        axios.post(`${BASE_URL}/addProducts`, form)
             .then((res) => {
                 console.log("deu boa")
             })
             .catch((err) => {
-                console.log("deu ruim")
+                alert(err.response.data)
             })
+    }
 
+    function handleChange(e) {
+        setForm({ ...form, [e.target.name]: e.target.value });
+        console.log(e.target.value)
     }
 
     return (
         <Container>
             <h1>Adicione novos produtos:</h1>
-            <form>
-                <input placeholder="Nome do produto" value={form.nameProduct} onChange={e => setForm({ ...form, nameProduct: e.target.value })} required />
-                <input placeholder="Descrição do produto" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} required />
-                <input placeholder="Preço do produto" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} required />
-                <input placeholder="Imagem do produto" value={form.imageProduct} onChange={e => setForm({ ...form, imageProduct: e.target.value })} required />
-                <button onClick={handleForm}>Cadastrar Produtos</button>
+            <form onClick={handleForm}>
+                <input placeholder="Nome do produto" type="text" name="name" value={form.name} onChange={handleChange} required />
+                <input placeholder="Descrição do produto" type="text" name="description" value={form.description} onChange={handleChange} required />
+                <input placeholder="Preço do produto" type="number" step={0.01} name="price" value={form.price} onChange={handleChange} required />
+                <input placeholder="Imagem do produto" type="text" name="image" value={form.image} onChange={handleChange} required />
+                <button type="submit">Cadastrar Produtos</button>
             </form>
         </Container>
     )
