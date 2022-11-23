@@ -24,13 +24,12 @@ export default function AddProducts() {
 
     function handleChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value });
-        console.log(e.target.value)
     }
 
     return (
         <Container>
             <h1>Adicione novos produtos:</h1>
-            <form onClick={handleForm}>
+            <form onSubmit={handleForm}>
                 <input placeholder="Nome do produto" type="text" name="name" value={form.name} onChange={handleChange} required />
                 <input placeholder="Descrição do produto" type="text" name="description" value={form.description} onChange={handleChange} required />
                 <input placeholder="Preço do produto" type="number" step={0.01} name="price" value={form.price} onChange={handleChange} required />
