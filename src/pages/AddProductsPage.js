@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import styled from "styled-components"
-
+import {BASE_URL} from "../constants/urls"
 export default function AddProducts() {
     const [form, setForm] = useState({
         nameProduct: "",
@@ -12,7 +12,7 @@ export default function AddProducts() {
 
     function handleForm(e) {
         e.preventDefault()
-        axios.post("http://localhost:5000/addProducts", form)
+        axios.post(`${BASE_URL}`, form)
             .then((res) => {
                 console.log("deu boa")
             })
