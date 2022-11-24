@@ -74,6 +74,10 @@ const Collection = styled.div`
         color: ${TEXT_COLOR};
         justify-content: space-between;
         box-sizing: border-box;
+        cursor: pointer;
+        :hover{
+            filter: brightness(0.8);
+        }
     }
 `
 const RightArea = styled.div`
@@ -84,12 +88,14 @@ width: 100px;
 img{
     width: 25px;
     margin-left: 5px;
+    cursor: pointer;
 }
 `
 const Logo = styled.div`
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    cursor: pointer;
     span{
         color: ${BACKGROUND_COLOR};
     }
@@ -101,6 +107,7 @@ const Logo = styled.div`
 `
 const Menu = styled.div`
     display: none;
+    cursor: pointer;
     @media (max-width: 500px) {
 
         display: flex;
@@ -108,7 +115,9 @@ const Menu = styled.div`
         align-items: center;
         img{
             width: 30px;
-            
+            :hover{
+            filter: brightness(0.8);
+        }
         }
     }
 `
@@ -117,6 +126,7 @@ const UserContainer = styled.div`
     width: 35px;
     height: 35px;
     display: flex;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -126,5 +136,8 @@ const UserContainer = styled.div`
         font-size: 20px;
         color: ${TEXT_COLOR};
     }
+    :hover{
+            filter: brightness(0.8);
+        }
     
 `
