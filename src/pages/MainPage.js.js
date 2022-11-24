@@ -1,8 +1,10 @@
+import Header from "../components/Header";
+
 export default function MainPage() {
     return (
         <>
             <h1>
-                MAIN PAGE
+                <Header/>
             </h1>
         </>
     );
