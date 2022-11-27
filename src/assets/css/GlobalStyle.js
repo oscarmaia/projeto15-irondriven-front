@@ -36,6 +36,9 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	line-height: 1;
 	background-color:${BACKGROUND_COLOR};
+	&::-webkit-scrollbar {
+    display: none;
+    }
 }
 ol, ul {
 	list-style: none;
