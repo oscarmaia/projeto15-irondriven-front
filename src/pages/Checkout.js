@@ -1,29 +1,33 @@
 import styled from "styled-components"
+import Header from "../components/Header"
 
 export default function Checkout() {
     return (
-        <Cont>
-            <Container>
-                <Identifique>
-                    <h1>Identifique-se</h1>
-                    <h2>Nome</h2>
-                    <input />
-                    <h2>E-mail</h2>
-                    <input />
-                    <h2>Endereço</h2>
-                    <input />
+        <>
+            <Header />
+            <Cont>
+                <Container>
+                    <Identifique>
+                        <h1>Identifique-se</h1>
+                        <h2>Nome</h2>
+                        <input />
+                        <h2>E-mail</h2>
+                        <input />
+                        <h2>Endereço</h2>
+                        <input />
 
-                </Identifique>
-                <Resumo>
-                    <h1>Resumo</h1>
-                    <h2>Produtos: Action Kratos</h2>
-                    <h2>Total 299,99</h2>
-                </Resumo>
+                    </Identifique>
+                    <Resumo>
+                        <h1>Resumo</h1>
+                        <h2>Produtos: Action Kratos</h2>
+                        <h2>Total 299,99</h2>
+                    </Resumo>
 
 
-            </Container>
-            <button>Continuar</button>
-        </Cont>
+                </Container>
+                <button>Continuar</button>
+            </Cont>
+        </>
     )
 }
 

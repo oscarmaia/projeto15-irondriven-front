@@ -18,18 +18,18 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-       <Header/> 
-      <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<SignUp />} />
-        <Route path='/product/:id' element={<ProductPage />} />
-        <Route path='newproducts' element={<AddProducts />} />
-        <Route path='cart' element={<CartProduct />} />
-        <Route path='checkout' element={<Checkout />} />
-        <Route path='success' element={<Success />} />
-      </Routes>
-       <Footer/> 
+      <LoginContext.Provider value={{ user, setUser }}>
+        <Routes>
+          <Route path='/' element={<MainPage />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<SignUp />} />
+          <Route path='/product/:id' element={<ProductPage />} />
+          <Route path='newproducts' element={<AddProducts />} />
+          <Route path='cart' element={<CartProduct />} />
+          <Route path='checkout' element={<Checkout />} />
+          <Route path='success' element={<Success />} />
+        </Routes>
+      </LoginContext.Provider>
     </BrowserRouter>
   );
 }

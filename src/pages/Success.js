@@ -1,15 +1,20 @@
 import styled from "styled-components"
+import Header from "../components/Header"
+
 export default function Success() {
     return (
-        <Cont>
-           
+        <>
+            <Header />
+            <Cont>
+
                 <Sucesso>
                     <h1>Parabens : Fulano</h1>
                     <h2>Sua compra sera entregue em breve !!</h2>
                 </Sucesso>
-            
-            <button>Voltar para loja</button>
-        </Cont>
+
+                <button>Voltar para loja</button>
+            </Cont>
+        </>
     )
 }
 

@@ -52,7 +52,7 @@ export default function MainPage() {
 
     return (
         <>
-           {/*  <Header /> */}
+            <Header />
             <MainContainer>
                 <Banner src="https://cdn.shopify.com/s/files/1/0595/2526/7508/files/Artboard_2.png" alt="banner" />
                 <AreaUtil>

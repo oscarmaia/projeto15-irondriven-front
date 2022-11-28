@@ -25,16 +25,16 @@ export default function ProductPage() {
     function addItemToCart() {
         const config = {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+              Authorization: `Bearer ${localStorage.getItem('token')}`
             }
-        };
-        axios.post(`${BASE_URL}/addToCart`, product, config)
-            .then(res => {
-                navigate('/')
-            })
-            .catch(err => {
-                alert(err.response.data)
-            })
+          };
+        axios.post(`${BASE_URL}/addToCart`,product,config)
+        .then(res=>{
+            navigate('/')
+        })
+        .catch(err=>{
+            alert(err.response.data)
+        })
     }
     return (
         <>
