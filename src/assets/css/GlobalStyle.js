@@ -33,6 +33,9 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	line-height: 1;
 	background-color:${BACKGROUND_COLOR};
