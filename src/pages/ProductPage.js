@@ -44,7 +44,7 @@ export default function ProductPage() {
 }
 
 const StyledButton=styled.button`
-background-color: ${DETAIL_COLOR};
+    background-color: ${DETAIL_COLOR};
 `
 const PriceArea = styled.div`
     position:absolute;

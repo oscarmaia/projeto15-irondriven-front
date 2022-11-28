@@ -19,7 +19,7 @@ function App() {
         <Route path='/register' element={<SignUp />} />
         <Route path='/product/:id' element={<ProductPage />} />
         <Route path='newproducts' element={<AddProducts />} />
-        <Route path='carrinho' element={<CartProduct />} />
+        <Route path='cart' element={<CartProduct />} />
         <Route path='checkout' element={<Checkout />} />
         <Route path='success' element={<Success />} />
       </Routes>
