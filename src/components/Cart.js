@@ -1,27 +1,50 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
+import { BASE_URL } from "../constants/urls"
 import ProductCart from "./ProductCart"
 
-export default function Cart(){
-
-    return(
+export default function Cart() {
+    const [products, setProducts] = useState([])
+    const config = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    };
+    useEffect(() => {
+        axios.get(`${BASE_URL}/getProductsOnCart`, config)
+            .then(res => {
+                console.log(res.data)
+                setProducts(res.data)
+            })
+            .catch(err => {
+                alert(err.responsa.data)
+            })
+    }, [])
+    return (
         <Cont>
-        <h1>Carinho:</h1>
-        <Carte>
-            <div>
-                <h2>Produto</h2>
-                <h2>Quantidade</h2>
-                <h2>Total</h2>
-            </div>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-            <ProductCart/>
-        </Carte>
-        <Back>
-            <button>Finalizar compra</button>
+            <h1>Carinho:</h1>
+            <Carte>
+                <div>
+                    <h2>Produto</h2>
+                    <h2>Quantidade</h2>
+                    <h2>Total</h2>
+                </div>
+                {products.map((e) =>
+                    <ProductCart
+                        key={e._id}
+                        id={e._id}
+                        name={e.name}
+                        price={e.price}
+                        description={e.description}
+                        image={e.image}
+                    />
+                )}
+            </Carte>
+            <Back>
+                <button>Finalizar compra</button>
             </Back>
-    </Cont>
+        </Cont>
     )
 }
 
