@@ -51,6 +51,7 @@ const Container = styled.div`
         display:flex;
         flex-direction:column;
         align-items:center;
+        min-height:100vh;
 
         form{
             display:flex;
@@ -65,7 +66,7 @@ const Container = styled.div`
         line-height: 31px;
         
         color: #FFFFFF;
-        margin-top:100px;
+        margin-top:50px;
         margin-bottom:30px;
 
     }

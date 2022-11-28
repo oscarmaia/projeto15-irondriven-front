@@ -31,7 +31,16 @@ const Container = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    height:500px;
+    margin-bottom:30px;
+    margin-top:80px;
+ 
+    @media (max-width: 400px){
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+    }
+    
 
       h1{
         font-family: Montserrat, sans-serif;
@@ -73,11 +82,12 @@ const Resumo = styled.div`
     }
 `
 const Cont = styled.div`
-display:flex;
-flex-direction:column;
-align-items:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:20px;
+    min-height:100vh;   
    button{
-        margin-top:30px;
         width:188px;
         height:58px;
         border-radius:5px;

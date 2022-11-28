@@ -16,14 +16,16 @@ export default function Footer() {
 
 const FooterContainer = styled.div`
     width: 100%;
-    height: 200px;
+    height: 100px;
     background-color: ${DETAIL_COLOR};
-    position: absolute;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    bottom: 0px;
-    margin: auto;
+    flex-direction:column;
+    
+   
+
     `
 const AreaUtil = styled.div`
         display: flex;

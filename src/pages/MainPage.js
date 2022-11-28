@@ -8,7 +8,7 @@ import backwardArrow from "../assets/images/backward_arrow.svg"
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
-import Footer from "../components/Footer";
+
 
 export default function MainPage() {
     const otakusRef = useRef(null)
@@ -52,7 +52,7 @@ export default function MainPage() {
 
     return (
         <>
-            <Header />
+           {/*  <Header /> */}
             <MainContainer>
                 <Banner src="https://cdn.shopify.com/s/files/1/0595/2526/7508/files/Artboard_2.png" alt="banner" />
                 <AreaUtil>
@@ -142,6 +142,7 @@ const MainContainer = styled.div`
     justify-content: center;    
     align-items: center;
     flex-direction: column;
+    min-height:100vh;   
     `
 const AreaUtil = styled.div`
         display: flex;
