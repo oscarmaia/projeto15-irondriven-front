@@ -1,19 +1,19 @@
-import { useState } from "react"
-import axios from "axios"
 import styled from "styled-components"
+import axios from "axios"
 import { BASE_URL } from "../constants/urls"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
-export default function AddProducts() {
+export default function SignUp() {
     const [form, setForm] = useState({
         name: "",
-        description: "",
-        price: "",
-        image: ""
+        email: "",
+        password: ""
     })
 
     function handleForm(e) {
         e.preventDefault()
-        axios.post(`${BASE_URL}/addProducts`, form)
+        axios.post(`${BASE_URL}/sign-up`, form)
             .then((res) => {
                 console.log("deu boa")
             })
@@ -28,14 +28,16 @@ export default function AddProducts() {
 
     return (
         <Container>
-            <h1>Adicione novos produtos:</h1>
-            <form onSubmit={handleForm}>
-                <input placeholder="Nome do produto" type="text" name="name" value={form.name} onChange={handleChange} required />
-                <input placeholder="Descrição do produto" type="text" name="description" value={form.description} onChange={handleChange} required />
-                <input placeholder="Preço do produto" type="number" step={0.01} name="price" value={form.price} onChange={handleChange} required />
-                <input placeholder="Imagem do produto" type="text" name="image" value={form.image} onChange={handleChange} required />
-                <button type="submit">Cadastrar Produtos</button>
+            <h1>Criar conta</h1>
+            <form onSubmit={handleForm} >
+                <input placeholder="Nome" type="text" name="name" value={form.name} onChange={handleChange} required />
+                <input placeholder="E-mail" type="text" name="email" value={form.email} onChange={handleChange} required />
+                <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
+                <button type="submit">Criar</button>
             </form>
+            <Link to={'/login'}>
+                <h2>Já tem uma conta? Entre agora!</h2>
+            </Link>
         </Container>
     )
 }
@@ -59,9 +61,19 @@ const Container = styled.div`
         line-height: 31px;
         
         color: #FFFFFF;
-        margin-top:50px;
+        margin-top:100px;
         margin-bottom:30px;
 
+    }
+
+    h2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 31px; 
+        color:#FFFFFF;
+
+        margin-top:20px;
     }
 
     input{
@@ -73,6 +85,11 @@ const Container = styled.div`
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
         margin-bottom:20px;
+
+        :hover {
+            border:#F25C06 1px solid;
+            
+            }
 
         ::placeholder{ 
             padding-left:14px;
@@ -95,10 +112,17 @@ const Container = styled.div`
 
         width: 300px;
         height: 58px; 
-        border-radius:15px;
-        font-size:20px;
+        border-radius:5px;
 
-        background: #F25C06;
+        background: #F25C05;
+
+        cursor: pointer;
+
+        :hover {
+            width: 305px;
+            height: 60px; 
+            
+            }
     }
 
 `
