@@ -8,10 +8,14 @@ import backwardArrow from "../assets/images/backward_arrow.svg"
 import { useRef } from "react";
 
 export default function MainPage() {
-    const ref = useRef();
-    function ScrollToOffset(offset) {
-        ref.current.scrollRight += offset;
+    const favoritesRef = useRef(null)
+    const otakusRef = useRef(null)
+    const gamesRef = useRef(null)
+    const moviesRef = useRef(null)
+    const scroll = (scrollOffset,ref) => {
+        ref.current.scrollLeft += scrollOffset;
     }
+
     return (
         <>
             <Header />
@@ -21,9 +25,21 @@ export default function MainPage() {
                     <StyledTitle>
                         Os mais pedidos &#x1F3C6;
                     </StyledTitle>
-                    <ProductsContainer>
-                        <BackwardArrow>
-                            <img src={backwardArrow} onClick={()=>ScrollToOffset(-20)} />
+                    <ProductsContainer ref={favoritesRef} >
+                        <BackwardArrow onClick={() => scroll(-21000,favoritesRef)}>
+                            <img src={backwardArrow} />
+                        </BackwardArrow>
+                        <Product />
+                        <ForwardArrow>
+                            <img src={fowardArrow} onClick={() => scroll(210,favoritesRef)} />
+                        </ForwardArrow>
+                    </ProductsContainer>
+                    <StyledTitle>
+                        Para os Viciados em Games 🕹️
+                    </StyledTitle>
+                    <ProductsContainer ref={gamesRef} >
+                        <BackwardArrow onClick={() => scroll(-21000,gamesRef)}>
+                            <img src={backwardArrow} />
                         </BackwardArrow>
                         <Product />
                         <Product />
@@ -43,35 +59,16 @@ export default function MainPage() {
                         <Product />
                         <Product />
                         <ForwardArrow>
-                            <img src={fowardArrow} onClick={()=>ScrollToOffset(20)} />
+                            <img src={fowardArrow} onClick={() => scroll(210,gamesRef)} />
                         </ForwardArrow>
-                    </ProductsContainer>
-                    <StyledTitle>
-                        Para os Viciados em Games 🕹️
-                    </StyledTitle>
-                    <ProductsContainer>
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
                     </ProductsContainer>
                     <StyledTitle>
                         Para os Otakus <img src={nipponImg} alt="nippon" />
                     </StyledTitle>
-                    <ProductsContainer>
+                    <ProductsContainer ref={otakusRef} >
+                        <BackwardArrow onClick={() => scroll(-21000,otakusRef)}>
+                            <img src={backwardArrow} />
+                        </BackwardArrow>
                         <Product />
                         <Product />
                         <Product />
@@ -89,12 +86,17 @@ export default function MainPage() {
                         <Product />
                         <Product />
                         <Product />
+                        <ForwardArrow>
+                            <img src={fowardArrow} onClick={() => scroll(210,otakusRef)} />
+                        </ForwardArrow>
                     </ProductsContainer>
                     <StyledTitle>
                         Para os Amantes de Filmes &#x1F3AC;
                     </StyledTitle>
-                    <ProductsContainer>
-                        <img src="" />
+                    <ProductsContainer ref={moviesRef} >
+                        <BackwardArrow onClick={() => scroll(-21000,moviesRef)}>
+                            <img src={backwardArrow} />
+                        </BackwardArrow>
                         <Product />
                         <Product />
                         <Product />
@@ -112,8 +114,10 @@ export default function MainPage() {
                         <Product />
                         <Product />
                         <Product />
+                        <ForwardArrow>
+                            <img src={fowardArrow} onClick={() => scroll(210,moviesRef)} />
+                        </ForwardArrow>
                     </ProductsContainer>
-
                 </AreaUtil>
             </MainContainer>
         </>
@@ -162,16 +166,17 @@ const ProductsContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     box-sizing: border-box;
-    overflow-x: auto;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
     margin-bottom: 20px;
     &::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
 `
 const ForwardArrow = styled.div`
     display: flex;
     top: calc(100%/2 - 17px);
-    right: 20px;
+    right: 0px;
     position: sticky;
     img{
         width: 35px;
@@ -181,7 +186,7 @@ const ForwardArrow = styled.div`
 const BackwardArrow = styled.div`
     display: flex;
     top: calc(100%/2 - 17px);
-    left: 20px;
+    left: 0px;
     position: sticky;
     img{
         width: 35px;
