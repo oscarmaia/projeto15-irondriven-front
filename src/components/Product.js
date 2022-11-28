@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { TEXT_COLOR } from "../constants/colors";
 
-export default function Product({name,price,image}) {
+export default function Product({ name, price, image }) {
     return (
         <ProductContainer>
             <StyledFrame>
-                <img src="https://cdn.awsli.com.br/1000x1000/138/138431/produto/89739734/263291ac75.jpg" alt={name}></img>
+                <img src={image} alt={name}></img>
             </StyledFrame>
-            <h1>Luffy action figure oscar</h1>
-            <h2>R$ 27,35</h2>
+            <h1>{name}</h1>
+            <h2>R$ {price}</h2>
         </ProductContainer>
     )
 }
