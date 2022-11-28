@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import styled from "styled-components"
 import { BASE_URL } from "../constants/urls"
+import Header from "../components/Header"
 
 export default function AddProducts() {
     const [form, setForm] = useState({
@@ -27,16 +28,19 @@ export default function AddProducts() {
     }
 
     return (
-        <Container>
-            <h1>Adicione novos produtos:</h1>
-            <form onSubmit={handleForm}>
-                <input placeholder="Nome do produto" type="text" name="name" value={form.name} onChange={handleChange} required />
-                <input placeholder="Descrição do produto" type="text" name="description" value={form.description} onChange={handleChange} required />
-                <input placeholder="Preço do produto" type="number" step={0.01} name="price" value={form.price} onChange={handleChange} required />
-                <input placeholder="Imagem do produto" type="text" name="image" value={form.image} onChange={handleChange} required />
-                <button type="submit">Cadastrar Produtos</button>
-            </form>
-        </Container>
+        <>
+            <Header />
+            <Container>
+                <h1>Adicione novos produtos:</h1>
+                <form onSubmit={handleForm}>
+                    <input placeholder="Nome do produto" type="text" name="name" value={form.name} onChange={handleChange} required />
+                    <input placeholder="Descrição do produto" type="text" name="description" value={form.description} onChange={handleChange} required />
+                    <input placeholder="Preço do produto" type="number" step={0.01} name="price" value={form.price} onChange={handleChange} required />
+                    <input placeholder="Imagem do produto" type="text" name="image" value={form.image} onChange={handleChange} required />
+                    <button type="submit">Cadastrar Produtos</button>
+                </form>
+            </Container>
+        </>
     )
 }
 
