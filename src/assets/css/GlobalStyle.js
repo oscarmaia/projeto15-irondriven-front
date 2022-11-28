@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { BACKGROUND_COLOR } from "../../constants/colors";
 
 const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -32,8 +33,12 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	font-family: 'Montserrat', sans-serif;
 	line-height: 1;
-	background-color:#131313;
+	background-color:${BACKGROUND_COLOR};
+	&::-webkit-scrollbar {
+    display: none;
+    }
 }
 ol, ul {
 	list-style: none;
