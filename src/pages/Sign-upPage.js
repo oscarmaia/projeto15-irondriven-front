@@ -3,6 +3,7 @@ import axios from "axios"
 import { BASE_URL } from "../constants/urls"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Header from "../components/Header"
 
 export default function SignUp() {
     const [form, setForm] = useState({
@@ -27,18 +28,21 @@ export default function SignUp() {
     }
 
     return (
-        <Container>
-            <h1>Criar conta</h1>
-            <form onSubmit={handleForm} >
-                <input placeholder="Nome" type="text" name="name" value={form.name} onChange={handleChange} required />
-                <input placeholder="E-mail" type="text" name="email" value={form.email} onChange={handleChange} required />
-                <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
-                <button type="submit">Criar</button>
-            </form>
-            <Link to={'/login'}>
-                <h2>Já tem uma conta? Entre agora!</h2>
-            </Link>
-        </Container>
+        <>
+            <Header />
+            <Container>
+                <h1>Criar conta</h1>
+                <form onSubmit={handleForm} >
+                    <input placeholder="Nome" type="text" name="name" value={form.name} onChange={handleChange} required />
+                    <input placeholder="E-mail" type="text" name="email" value={form.email} onChange={handleChange} required />
+                    <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
+                    <button type="submit">Criar</button>
+                </form>
+                <Link to={'/login'}>
+                    <h2>Já tem uma conta? Entre agora!</h2>
+                </Link>
+            </Container>
+        </>
     )
 }
 

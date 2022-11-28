@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { BASE_URL } from "../constants/urls"
 import axios from "axios"
+import Header from "../components/Header"
 
 export default function Login() {
 
@@ -26,17 +27,20 @@ export default function Login() {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
     return (
-        <Container>
-            <h1>Fazer Login</h1>
-            <form onSubmit={handleForm}>
-                <input placeholder="E-mail" type="email" name="email" value={form.email} onChange={handleChange} required  />
-                <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
-                <button type="submit">Fazer Login</button>
-            </form>
-            <Link to={'/register'}>
-                <h2>Criar conta</h2>
-            </Link>
-        </Container>
+        <>
+            <Header />
+            <Container>
+                <h1>Fazer Login</h1>
+                <form onSubmit={handleForm}>
+                    <input placeholder="E-mail" type="email" name="email" value={form.email} onChange={handleChange} required />
+                    <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
+                    <button type="submit">Fazer Login</button>
+                </form>
+                <Link to={'/register'}>
+                    <h2>Criar conta</h2>
+                </Link>
+            </Container>
+        </>
     )
 }
 
