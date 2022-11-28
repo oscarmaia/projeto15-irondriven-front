@@ -2,7 +2,7 @@ import styled from "styled-components"
 import axios from "axios"
 import { BASE_URL } from "../constants/urls"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Header from "../components/Header"
 
 export default function SignUp() {
@@ -11,12 +11,12 @@ export default function SignUp() {
         email: "",
         password: ""
     })
-
+    const navigate = useNavigate()
     function handleForm(e) {
         e.preventDefault()
         axios.post(`${BASE_URL}/sign-up`, form)
             .then((res) => {
-                console.log("deu boa")
+                navigate('/login')
             })
             .catch((err) => {
                 alert(err.response.data)
