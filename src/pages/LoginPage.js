@@ -45,7 +45,8 @@ const Container = styled.div`
         display:flex;
         flex-direction:column;
         align-items:center;
-
+        min-height:100vh;
+        
         form{
             display:flex;
             flex-direction:column;
@@ -80,7 +81,7 @@ const Container = styled.div`
         width: 326px;
         height: 58px; 
 
-       /*  background: #0D0A0B; */
+       
         border: 1px solid #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
@@ -98,7 +99,7 @@ const Container = styled.div`
             font-weight: 400;
             font-size: 15px;
             line-height: 23px;
-            /* color: #FFFFFF; */
+            
             
         }
 

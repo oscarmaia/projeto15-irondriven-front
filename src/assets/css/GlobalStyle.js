@@ -33,6 +33,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	
 	min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -41,6 +42,7 @@ body {
 	background-color:${BACKGROUND_COLOR};
 	&::-webkit-scrollbar {
     display: none;
+	
     }
 }
 ol, ul {

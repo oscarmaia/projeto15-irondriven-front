@@ -55,7 +55,7 @@ const Back = styled.div`
 `
 
 const Cont = styled.div`
-    
+     min-height:100vh;   
     h1{
         font-family: Montserrat, sans-serif;
         font-style: normal;

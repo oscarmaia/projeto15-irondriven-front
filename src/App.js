@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './assets/css/GlobalStyle';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import AddProducts from './pages/AddProductsPage';
 import CartProduct from './pages/CartProduct';
 import Checkout from './pages/Checkout';
@@ -13,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
+       <Header/> 
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<Login />} />
@@ -23,6 +26,7 @@ function App() {
         <Route path='checkout' element={<Checkout />} />
         <Route path='success' element={<Success />} />
       </Routes>
+       <Footer/> 
     </BrowserRouter>
   );
 }

@@ -44,7 +44,7 @@ const Cont = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    height:500px;
+    min-height:100vh;
    button{
         margin-top:30px;
         width:188px;
