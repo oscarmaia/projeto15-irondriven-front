@@ -3,8 +3,9 @@ import Header from "../components/Header";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
-import { TEXT_COLOR } from "../constants/colors";
+import { DETAIL_COLOR, TEXT_COLOR } from "../constants/colors";
 import { useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function ProductPage() {
     const params = useParams()
@@ -20,7 +21,6 @@ export default function ProductPage() {
             })
     }, [])
 
-
     return (
         <>
             <Header />
@@ -30,17 +30,49 @@ export default function ProductPage() {
                         <StyledFrame>
                             <img src={product.image} alt={product.name}></img>
                         </StyledFrame>
-                        <h1>{product.name}</h1>
+                        <InfoContainer>
+                            <h1>{product.name}</h1>
+                            <h2>{product.description}</h2>
+                            <PriceArea><h1>R$ {product.price}</h1></PriceArea>
+                        </InfoContainer>
                     </ProductContainer>
+                    <StyledButton>ADD TO CART</StyledButton>
                 </AreaUtil>
             </MainContainer>
         </>
     );
 }
 
+const StyledButton=styled.button`
+background-color: ${DETAIL_COLOR};
+`
+const PriceArea = styled.div`
+    position:absolute;
+    bottom: 0px;
+    left: 0px;
+    padding:0px 10px;
+    h1{
+        font-weight: 700;
+        color: ${DETAIL_COLOR};
+    }
+`
+const InfoContainer = styled.div`
+    position: relative;
+    padding:0px 10px;
+    h1{
+        font-weight: 700;
+        font-size: 32px;
+    }
+    h2{
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 20px;
+        color:white;
+    }
+`
+
 const ProductContainer = styled.div`
     display: flex;
-    background-color: cyan;
         h1{
             color:${TEXT_COLOR}
         }
@@ -52,20 +84,18 @@ const MainContainer = styled.div`
     justify-content: center;    
     align-items: center;
     flex-direction: column;
-    `
+`
+
 const AreaUtil = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
         width: 70%;
-        background-color: red;
         @media all and (max-width: 500px){
             width: 90%;
         }
-
-
-        `
+`
 
 const StyledTitle = styled.h1`
     display: flex;
@@ -101,15 +131,16 @@ const StyledFrame = styled.div`
     border: solid white;
     border-radius: 5px;
     box-sizing: border-box;
-    min-height: 250px;
-    min-width: 210px;
+    min-height: 350px;
+    min-width: 310px;
     color: ${TEXT_COLOR};
     background-color: white;
 
     img{
-        height: 204px;
-        width: 204px;
+        height: 345px;
+        width: 305px;
     }
+
     &:hover{
      filter:brightness(0.8);
      cursor: pointer;

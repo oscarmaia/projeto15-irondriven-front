@@ -8,6 +8,7 @@ import backwardArrow from "../assets/images/backward_arrow.svg"
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
+import Footer from "../components/Footer";
 
 export default function MainPage() {
     const otakusRef = useRef(null)

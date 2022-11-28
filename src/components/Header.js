@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import cartImage from "../assets/images/cart.svg"
 import menuImage from "../assets/images/menu.svg"
 import { BACKGROUND_COLOR, DETAIL_COLOR, TEXT_COLOR } from "../constants/colors"
+
 
 export default function Header() {
     return (
@@ -10,10 +12,13 @@ export default function Header() {
                 <Menu>
                     <img src={menuImage} alt="menu"></img>
                 </Menu>
+
                 <LeftArea>
-                    <Logo>
-                        <h1>iron<span>driven</span></h1>
-                    </Logo>
+                    <Link to={'/'}>
+                        <Logo>
+                            <h1>iron<span>driven</span></h1>
+                        </Logo>
+                    </Link>
                 </LeftArea>
                 <CenterArea>
                     <Collection>
@@ -53,9 +58,13 @@ const AreaUtil = styled.div`
         @media all and (max-width: 500px){
             width: 90%;
         }
+        a{
+    text-decoration:none;
+}
         `
 const LeftArea = styled.div`
 display: flex;
+align-items: center;
 `
 const CenterArea = styled.div`
 display: flex;
