@@ -1,17 +1,17 @@
 import styled from "styled-components"
 
 
-export default function ProductCart() {
+export default function ProductCart({id,name,price,image}) {
     return (
         <>
             <hr></hr>
             <Produto>
                 <Product>
-                    <img src="https://cdn.shopify.com/s/files/1/0595/2526/7508/products/H990497ac9ed34162bead5bea38262df9e_1156bf15-2b8c-4fc0-be93-9cd38014fd28.jpg?v=1657412284&width=300" />
-                    <h2>Action Boneneco</h2>
+                    <img src={image}/>
+                    <h2>{name}</h2>
                 </Product>
                 <h2>1</h2>
-                <h2>Preço 299,99</h2>
+                <h2>Preço {price}</h2>
             </Produto>
         </>
     )
