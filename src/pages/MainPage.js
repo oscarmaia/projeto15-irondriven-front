@@ -77,6 +77,7 @@ export default function MainPage() {
                         {gameProducts.map((e, i) =>
                             <Product
                                 key={e._id}
+                                id={e._id}
                                 name={e.name}
                                 price={e.price}
                                 description={e.description}
@@ -97,6 +98,7 @@ export default function MainPage() {
                         {otakuProducts.map((e, i) =>
                             <Product
                                 key={e._id}
+                                id={e._id}
                                 name={e.name}
                                 price={e.price}
                                 description={e.description}
@@ -117,6 +119,7 @@ export default function MainPage() {
                         {movieProducts.map((e, i) =>
                             <Product
                                 key={e._id}
+                                id={e._id}
                                 name={e.name}
                                 price={e.price}
                                 description={e.description}

@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { TEXT_COLOR } from "../constants/colors";
 
-export default function Product({ name, price, image }) {
+export default function Product({ name, price, image, id }) {
+    const navigate = useNavigate()
+
+    function goToProductPage() {
+        navigate(`/product/${id}`)
+    }
+
     return (
-        <ProductContainer>
+        <ProductContainer onClick={() => goToProductPage(id)}>
             <StyledFrame>
                 <img src={image} alt={name}></img>
             </StyledFrame>
