@@ -1,11 +1,14 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { BASE_URL } from "../constants/urls"
 import axios from "axios"
+import Header from "../components/Header"
+import { LoginContext } from "../context/LoginContext"
 
 export default function Login() {
-
+    const navigate = useNavigate()
+    const { user, setUser } = useContext(LoginContext);
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -14,29 +17,50 @@ export default function Login() {
     function handleForm(e) {
         e.preventDefault()
         axios.post(`${BASE_URL}/sign-in`, form)
-            .then((res) => {
-                console.log("deu boa")
+            .then(res => {
+                const token = res.data.token;
+                const newUser = {
+                    token
+                }
+                setUser(newUser);
+                localStorage.setItem("token", token)
+                navigate('/')
             })
-            .catch((err) => {
+            .catch(err => {
                 alert(err.response.data)
+                localStorage.clear();
+                navigate('/')
             })
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            const newUser = {
+                token: localStorage.getItem('token')
+            }
+            setUser(newUser)
+            navigate('/');
+        }
+    }, [])
 
     function handleChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
     return (
-        <Container>
-            <h1>Fazer Login</h1>
-            <form onSubmit={handleForm}>
-                <input placeholder="E-mail" type="email" name="email" value={form.email} onChange={handleChange} required  />
-                <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
-                <button type="submit">Fazer Login</button>
-            </form>
-            <Link to={'/register'}>
-                <h2>Criar conta</h2>
-            </Link>
-        </Container>
+        <>
+            <Header />
+            <Container>
+                <h1>Fazer Login</h1>
+                <form onSubmit={handleForm}>
+                    <input placeholder="E-mail" type="email" name="email" value={form.email} onChange={handleChange} required />
+                    <input placeholder="Senha" type="password" name="password" value={form.password} onChange={handleChange} required />
+                    <button type="submit">Fazer Login</button>
+                </form>
+                <Link to={'/register'}>
+                    <h2>Criar conta</h2>
+                </Link>
+            </Container>
+        </>
     )
 }
 

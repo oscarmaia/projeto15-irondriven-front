@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 import { DETAIL_COLOR, TEXT_COLOR } from "../constants/colors";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 
 export default function ProductPage() {
     const params = useParams()
     const [product, setProduct] = useState({});
+    const navigate = useNavigate()
     useEffect(() => {
         const { id } = params;
         axios.get(`${BASE_URL}/product/${id}`)
@@ -21,6 +22,20 @@ export default function ProductPage() {
             })
     }, [])
 
+    function addItemToCart() {
+        const config = {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          };
+        axios.post(`${BASE_URL}/addToCart`,product,config)
+        .then(res=>{
+            navigate('/')
+        })
+        .catch(err=>{
+            alert(err.response.data)
+        })
+    }
     return (
         <>
             <Header />
@@ -36,15 +51,15 @@ export default function ProductPage() {
                             <PriceArea><h1>R$ {product.price}</h1></PriceArea>
                         </InfoContainer>
                     </ProductContainer>
-                    <StyledButton>ADD TO CART</StyledButton>
+                    <StyledButton onClick={addItemToCart}>ADD TO CART</StyledButton>
                 </AreaUtil>
             </MainContainer>
         </>
     );
 }
 
-const StyledButton=styled.button`
-background-color: ${DETAIL_COLOR};
+const StyledButton = styled.button`
+    background-color: ${DETAIL_COLOR};
 `
 const PriceArea = styled.div`
     position:absolute;

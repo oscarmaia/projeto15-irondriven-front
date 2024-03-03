@@ -4,7 +4,6 @@ import cartImage from "../assets/images/cart.svg"
 import menuImage from "../assets/images/menu.svg"
 import { BACKGROUND_COLOR, DETAIL_COLOR, TEXT_COLOR } from "../constants/colors"
 
-
 export default function Header() {
     return (
         <HeaderContainer>
@@ -32,10 +31,14 @@ export default function Header() {
                     </Collection>
                 </CenterArea>
                 <RightArea>
-                    <UserContainer>
-                        <h1>?</h1>
-                    </UserContainer>
-                    <img src={cartImage} alt="cart"></img>
+                    <Link to={'/login'}>
+                        <UserContainer>
+                            <h1>?</h1>
+                        </UserContainer>
+                    </Link>
+                    <Link to={'/cart'}>
+                        <img src={cartImage} alt="cart"></img>
+                    </Link>
                 </RightArea>
             </AreaUtil>
         </HeaderContainer>

@@ -1,30 +1,50 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
-export default function Cart(){
+import { BASE_URL } from "../constants/urls"
+import ProductCart from "./ProductCart"
 
-    return(
+export default function Cart() {
+    const [products, setProducts] = useState([])
+    const config = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    };
+    useEffect(() => {
+        axios.get(`${BASE_URL}/getProductsOnCart`, config)
+            .then(res => {
+                console.log(res.data)
+                setProducts(res.data)
+            })
+            .catch(err => {
+                alert(err.responsa.data)
+            })
+    }, [])
+    return (
         <Cont>
-        <h1>Carinho:</h1>
-        <Carte>
-            <div>
-                <h2>Produto</h2>
-                <h2>Quantidade</h2>
-                <h2>Total</h2>
-            </div>
-            <hr></hr>
-            <Produto>
-                <Product>
-                    <img src="https://cdn.shopify.com/s/files/1/0595/2526/7508/products/H990497ac9ed34162bead5bea38262df9e_1156bf15-2b8c-4fc0-be93-9cd38014fd28.jpg?v=1657412284&width=300" />
-                    <h2>Action Boneneco</h2>
-                </Product>
-                <h2>1</h2>
-                <h2>Preço 299,99</h2>
-            </Produto>
-            <hr></hr>
-        </Carte>
-        <Back>
-            <button>Finalizar compra</button>
+            <h1>Carinho:</h1>
+            <Carte>
+                <div>
+                    <h2>Produto</h2>
+                    <h2>Quantidade</h2>
+                    <h2>Total</h2>
+                </div>
+                {products.map((e) =>
+                    <ProductCart
+                        key={e._id}
+                        id={e._id}
+                        name={e.name}
+                        price={e.price}
+                        description={e.description}
+                        image={e.image}
+                    />
+                )}
+            </Carte>
+            <Back>
+                <button>Finalizar compra</button>
             </Back>
-    </Cont>
+        </Cont>
     )
 }
 
@@ -93,22 +113,4 @@ const Carte = styled.div`
         width:100px;
 
     }
-`
-
-const Produto = styled.div`
-     display:flex;
-    justify-content:space-around;
-
-    margin-left:20px;
-    margin-right:20px;
-
-`
-
-const Product = styled.div`
-    display:flex;
-    flex-direction:column;
-    h2{
-        margin-top:10px;
-    }
-
 `
